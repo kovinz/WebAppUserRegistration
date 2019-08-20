@@ -6,7 +6,7 @@
           <input type="text" [(ngModel)]="user.login"
             class="form-control" id="login" name="login" placeholder="Enter your login"
             required #login="ngModel">
-          <div [hidden]="!login.pristine" class="alert alert-danger">Login is required</div>
+          <div *ngIf="login.invalid && login.touched" class="alert alert-danger">Login is required</div>
         </div>
 
         <div class="form-group">
@@ -14,7 +14,7 @@
           <input type="password" [(ngModel)]="user.password"
                  class="form-control" id="password" name="password" placeholder="Enter your password"
                  required #password="ngModel">
-          <div [hidden]="!password.pristine" class="alert alert-danger">Password is required</div>
+          <div *ngIf="password.invalid && password.touched" class="alert alert-danger">Password is required</div>
         </div>
 
         <button type="submit" [disabled]="!userForm.form.valid" class="btn btn-info">OK</button>

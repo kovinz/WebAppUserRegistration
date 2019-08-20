@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {User} from './model/user';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +9,18 @@ import {Component} from '@angular/core';
 export class AppComponent {
 
   title: string;
+  currentUser: User;
 
   constructor() {
     this.title = 'Web Portal';
   }
+
+  public setUser(user: User) {
+    this.currentUser = user;
+  }
+
+  public getUser() {
+    return this.currentUser;
+  }
+
 }

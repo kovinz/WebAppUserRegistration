@@ -1,5 +1,15 @@
 <div class="card my-5">
     <div class="card-body">
+      <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+        <div class="form-group">
+          <label for="login">Filter By Login</label>
+          <input type="text" [(ngModel)]="user.login"
+                 class="form-control" id="login" name="login" placeholder="Enter login"
+                 required #login="ngModel">
+        </div>
+        <button type="submit" [disabled]="!userForm.form.valid" class="btn btn-info">Filter</button>
+      </form>
+
       <table class="table table-bordered table-striped">
         <thead class="thead-dark">
           <tr>
