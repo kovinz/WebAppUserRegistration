@@ -60,22 +60,28 @@ public class UserController {
         log.info("Request to create user: {}", user);
 
         User result = userRepository.save(user);
-        return ResponseEntity.created(new URI("/api/users/" + result.getUserId()))
+        return ResponseEntity.created(new URI("/users/" + result.getUserId()))
                 .body(result);
     }
 
     @GetMapping(value = "users/email/{email}")
-    public List<User> findByEmail(@PathVariable String email) {
-        return userRepository.findByEmail(email);
+    public ResponseEntity<?> findByEmail(@PathVariable String email) {
+        Optional<User> userOptional = userRepository.findByEmail(email);
+        return userOptional.map(response -> ResponseEntity.ok().body(response))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @GetMapping(value = "users/name/{name}")
-    public List<User> findByName(@PathVariable String name) {
-        return userRepository.findByName(name);
+    public ResponseEntity<?> findByName(@PathVariable String name) {
+        Optional<User> userOptional = userRepository.findByName(name);
+        return userOptional.map(response -> ResponseEntity.ok().body(response))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @GetMapping(value = "users/login/{login}")
-    public List<User> findByLogin(@PathVariable String login) {
-        return userRepository.findByLogin(login);
+    public ResponseEntity<?> findByLogin(@PathVariable String login) {
+        Optional<User> userOptional = userRepository.findByLogin(login);
+        return userOptional.map(response -> ResponseEntity.ok().body(response))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 }
