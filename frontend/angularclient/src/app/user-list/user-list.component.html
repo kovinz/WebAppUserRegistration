@@ -1,32 +1,30 @@
 <div class="card my-5">
-    <div class="card-body">
-      <form (ngSubmit)="onSubmit()" #userForm="ngForm">
-        <div class="form-group">
-          <label for="login">Filter By Login</label>
-          <input type="text" [(ngModel)]="user.login"
-                 class="form-control" id="login" name="login" placeholder="Enter login"
-                 required #login="ngModel">
-        </div>
-        <button type="submit" [disabled]="!userForm.form.valid" class="btn btn-info">Filter</button>
-      </form>
-
-      <table class="table table-bordered table-striped">
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col">Login</th>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Password</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let user of users">
-            <td>{{ user.login }}</td>
-            <td>{{ user.name }}</td>
-            <td>{{ user.email }}</td>
-            <td>{{ user.password }}</td>
-          </tr>
-        </tbody>
-      </table>
+  <form (ngSubmit)="onSubmit()" #userForm="ngForm" class="card-body">
+    <div class="form-group">
+      <label for="login">Filter By Login</label>
+      <input type="text" [(ngModel)]="user.login"
+             class="form-control" id="login" name="login" placeholder="Enter login"
+             required #login="ngModel">
     </div>
-  </div>
+    <button type="submit" [disabled]="!userForm.form.valid" class="btn btn-info">Filter</button>
+  </form>
+
+  <table class="table table-bordered table-striped card-body">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">Login</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Password</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.login }}</td>
+      <td>{{ user.name }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.password }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

@@ -36,10 +36,9 @@
       <div class="form-group">
         <label for="confirmPassword">Repeat password</label>
         <input type="password"
-               class="form-control" id="confirmPassword" name="confirmPasswordt" placeholder="Repeat your password"
+               class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Repeat your password"
                required>
       </div>
-      <div *ngIf="userForm.value.password !== userForm.value.confirmPassword" class="alert alert-danger">Passwords in two fields are different!</div>
 
       <button type="submit" [disabled]="!userForm.form.valid" class="btn btn-info">Submit</button>
       &nbsp;

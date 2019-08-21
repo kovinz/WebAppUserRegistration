@@ -4,36 +4,29 @@
       <div class="form-group">
         <label for="login">Login</label>
         <input type="text" [(ngModel)]="user.login"
-               class="form-control" id="login" name="login" placeholder="Enter your login"
+               class="form-control" id="login" name="login" placeholder="Enter login to change"
                required #login="ngModel">
       </div>
 
       <div class="form-group">
         <label for="name">Name</label>
         <input type="text" [(ngModel)]="user.name"
-               class="form-control" id="name" name="name" placeholder="Enter your name"
+               class="form-control" id="name" name="name" placeholder="Enter name to change"
                required #name="ngModel">
       </div>
 
       <div class="form-group">
         <label for="email">Email</label>
         <input type="text" [(ngModel)]="user.email"
-               class="form-control" id="email" name="email" placeholder="Enter your email address"
+               class="form-control" id="email" name="email" placeholder="Enter email to change"
                required #email="ngModel">
       </div>
 
       <div class="form-group">
         <label for="password">Password</label>
         <input type="password" [(ngModel)]="user.password"
-               class="form-control" id="password" name="password" placeholder="Enter your password"
+               class="form-control" id="password" name="password" placeholder="Enter password to change"
                required #password="ngModel" >
-      </div>
-
-      <div class="form-group">
-        <label for="confirmPassword">Repeat password</label>
-        <input type="password"
-               class="form-control" id="confirmPassword" name="confirmPasswordt" placeholder="Repeat your password"
-               required>
       </div>
 
       <button type="submit" [disabled]="!userForm.form.valid" class="btn btn-info">Submit</button>

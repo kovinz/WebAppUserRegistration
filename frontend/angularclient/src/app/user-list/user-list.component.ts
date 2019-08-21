@@ -21,18 +21,23 @@ export class UserListComponent implements OnInit {
 
   ngOnInit() {
     this.userService.findAll().subscribe(data => {
-      data.forEach(u => {
-        if (u.login !== this.signedUser.login || u.password !== this.signedUser.password) {
-          u.password = '';
-        }
-      });
+      this.deletePasswords(data);
       this.users = data;
     });
   }
 
   onSubmit() {
     this.userService.filterByLogin(this.user).subscribe(data => {
+      this.deletePasswords(data);
       this.users = data;
+    });
+  }
+
+  deletePasswords(data) {
+    data.forEach(u => {
+      if (u.login !== this.signedUser.login || u.password !== this.signedUser.password) {
+        u.password = '';
+      }
     });
   }
 }
